@@ -12,7 +12,11 @@ using namespace ReEng; //Using ReEng namespace to use all the classes in the dll
 
 class AppClass : public ReEngAppClass
 {
-	float fDuration = 1.0f; //Time Duration of the stops
+	float fDuration = 5.0f; //Time Duration of the stops
+	std::vector<vector3> positions;	// Holds the positions for WallEye and spheres
+	float start;	// The starting position for WallEye
+	float end;	// The ending position for WallEye
+	float count;	// The amount of time WallEye has LERPed between points
 public:
 	typedef ReEngAppClass super;
 	/*
