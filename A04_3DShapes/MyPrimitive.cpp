@@ -10,7 +10,7 @@ void MyPrimitive::CompileObject(vector3 a_v3Color)
 	{
 		AddVertexColor(a_v3Color);
 	}
-	
+
 	CompleteTriangleInfo(true);
 	CompileOpenGL3X();
 
@@ -111,15 +111,46 @@ void MyPrimitive::GenerateCone(float a_fRadius, float a_fHeight, int a_nSubdivis
 
 	//Your code starts here
 	float fValue = 0.5f;
-	//3--2
-	//|  |
-	//0--1
-	vector3 point0(-fValue, -fValue, fValue); //0
-	vector3 point1(fValue, -fValue, fValue); //1
-	vector3 point2(fValue, fValue, fValue); //2
-	vector3 point3(-fValue, fValue, fValue); //3
 
-	AddQuad(point0, point1, point3, point2);
+	float angle = 360.0f;
+	float angleDegree = angle / a_nSubdivisions;
+	float rad = (float)PI / 180.0f;
+
+	// Top
+	for (int i = 0; i < a_nSubdivisions; i++) {
+		float x = a_fRadius * cos(angle * rad);
+		float z = a_fRadius * sin(angle * rad);
+		float y = a_fHeight;
+
+		AddVertexPosition(vector3(x, 0.0f, z));
+
+		angle -= angleDegree;
+
+		x = a_fRadius * cos(angle * rad);
+		z = a_fRadius * sin(angle * rad);
+		y = a_fHeight;
+
+		AddVertexPosition(vector3(x, 0.0f, z));
+		AddVertexPosition(vector3(0.0f, y, 0.0f));
+	}
+
+	// Base
+	for (int i = 0; i < a_nSubdivisions; i++) {
+		float x = a_fRadius * cos(angle * rad);
+		float z = a_fRadius * sin(angle * rad);
+		float y = a_fHeight;
+
+		AddVertexPosition(vector3(x, 0.0f, z));
+
+		angle += angleDegree;
+
+		x = a_fRadius * cos(angle * rad);
+		z = a_fRadius * sin(angle * rad);
+		y = a_fHeight;
+
+		AddVertexPosition(vector3(x, 0.0f, z));
+		AddVertexPosition(vector3(0.0f, 0.0f, 0.0f));
+	}
 
 	//Your code ends here
 	CompileObject(a_v3Color);
@@ -136,15 +167,67 @@ void MyPrimitive::GenerateCylinder(float a_fRadius, float a_fHeight, int a_nSubd
 
 	//Your code starts here
 	float fValue = 0.5f;
-	//3--2
-	//|  |
-	//0--1
-	vector3 point0(-fValue, -fValue, fValue); //0
-	vector3 point1(fValue, -fValue, fValue); //1
-	vector3 point2(fValue, fValue, fValue); //2
-	vector3 point3(-fValue, fValue, fValue); //3
 
-	AddQuad(point0, point1, point3, point2);
+	float angle = 360.0f;
+	float angleDegree = angle / a_nSubdivisions;
+	float rad = (float)PI / 180.0f;
+
+	// Body
+	for (int i = 0; i < a_nSubdivisions; i++) {
+		float x = a_fRadius * cos(angle * rad);
+		float z = a_fRadius * sin(angle * rad);
+		float y = a_fHeight;
+
+		vector3 point1 = vector3(x, 0.0f, z);
+		vector3 point3 = vector3(x, y, z);
+
+		angle -= angleDegree;
+
+		x = a_fRadius * cos(angle * rad);
+		z = a_fRadius * sin(angle * rad);
+		y = a_fHeight;
+
+		vector3 point2 = vector3(x, 0.0f, z);
+		vector3 point4 = vector3(x, y, z);
+
+		AddQuad(point1, point2, point3, point4);
+	}
+
+	// Top
+	for (int i = 0; i < a_nSubdivisions; i++) {
+		float x = a_fRadius * cos(angle * rad);
+		float z = a_fRadius * sin(angle * rad);
+		float y = a_fHeight;
+
+		AddVertexPosition(vector3(x, y, z));
+
+		angle -= angleDegree;
+
+		x = a_fRadius * cos(angle * rad);
+		z = a_fRadius * sin(angle * rad);
+		y = a_fHeight;
+
+		AddVertexPosition(vector3(x, y, z));
+		AddVertexPosition(vector3(0.0f, y, 0.0f));
+	}
+
+	// Base
+	for (int i = 0; i < a_nSubdivisions; i++) {
+		float x = a_fRadius * cos(angle * rad);
+		float z = a_fRadius * sin(angle * rad);
+		float y = a_fHeight;
+
+		AddVertexPosition(vector3(x, 0.0f, z));
+
+		angle += angleDegree;
+
+		x = a_fRadius * cos(angle * rad);
+		z = a_fRadius * sin(angle * rad);
+		y = a_fHeight;
+
+		AddVertexPosition(vector3(x, 0.0f, z));
+		AddVertexPosition(vector3(0.0f, 0.0f, 0.0f));
+	}
 
 	//Your code ends here
 	CompileObject(a_v3Color);
@@ -161,15 +244,115 @@ void MyPrimitive::GenerateTube(float a_fOuterRadius, float a_fInnerRadius, float
 
 	//Your code starts here
 	float fValue = 0.5f;
-	//3--2
-	//|  |
-	//0--1
-	vector3 point0(-fValue, -fValue, fValue); //0
-	vector3 point1(fValue, -fValue, fValue); //1
-	vector3 point2(fValue, fValue, fValue); //2
-	vector3 point3(-fValue, fValue, fValue); //3
 
-	AddQuad(point0, point1, point3, point2);
+	float angle = 360.0f;
+	float angleDegree = angle / a_nSubdivisions;
+	float rad = (float)PI / 180.0f;
+
+	// Outer Body
+	for (int i = 0; i < a_nSubdivisions; i++) {
+		float x = a_fOuterRadius * cos(angle * rad);
+		float z = a_fOuterRadius * sin(angle * rad);
+		float y = a_fHeight;
+
+		vector3 point1 = vector3(x, 0.0f, z);
+		vector3 point3 = vector3(x, y, z);
+
+		angle -= angleDegree;
+
+		x = a_fOuterRadius * cos(angle * rad);
+		z = a_fOuterRadius * sin(angle * rad);
+		y = a_fHeight;
+
+		vector3 point2 = vector3(x, 0.0f, z);
+		vector3 point4 = vector3(x, y, z);
+
+		AddQuad(point1, point2, point3, point4);
+	}
+
+	// Inner Body
+	for (int i = 0; i < a_nSubdivisions; i++) {
+		float x = a_fInnerRadius * cos(angle * rad);
+		float z = a_fInnerRadius * sin(angle * rad);
+		float y = a_fHeight;
+
+		vector3 point1 = vector3(x, 0.0f, z);
+		vector3 point3 = vector3(x, y, z);
+
+		angle += angleDegree;
+
+		x = a_fInnerRadius * cos(angle * rad);
+		z = a_fInnerRadius * sin(angle * rad);
+		y = a_fHeight;
+
+		vector3 point2 = vector3(x, 0.0f, z);
+		vector3 point4 = vector3(x, y, z);
+
+		AddQuad(point1, point2, point3, point4);
+	}
+
+	// Top
+	for (int i = 0; i < a_nSubdivisions; i++) {
+		float x = a_fOuterRadius * cos(angle * rad);
+		float z = a_fOuterRadius * sin(angle * rad);
+		float y = a_fHeight;
+
+		vector3 point1 = vector3(x, y, z);
+
+		x = a_fInnerRadius * cos(angle * rad);
+		z = a_fInnerRadius * sin(angle * rad);
+		y = a_fHeight;
+
+		vector3 point2 = vector3(x, y, z);
+
+		angle += angleDegree;
+
+		x = a_fOuterRadius * cos(angle * rad);
+		z = a_fOuterRadius * sin(angle * rad);
+		y = a_fHeight;
+
+		vector3 point3 = vector3(x, y, z);
+
+		x = a_fInnerRadius * cos(angle * rad);
+		z = a_fInnerRadius * sin(angle * rad);
+		y = a_fHeight;
+
+		vector3 point4 = vector3(x, y, z);
+
+		AddQuad(point1, point2, point3, point4);
+	}
+
+	// Base
+	for (int i = 0; i < a_nSubdivisions; i++) {
+		float x = a_fOuterRadius * cos(angle * rad);
+		float z = a_fOuterRadius * sin(angle * rad);
+		float y = a_fHeight;
+
+		vector3 point1 = vector3(x, 0.0f, z);
+
+		x = a_fInnerRadius * cos(angle * rad);
+		z = a_fInnerRadius * sin(angle * rad);
+		y = a_fHeight;
+
+		vector3 point2 = vector3(x, 0.0f, z);
+
+		angle -= angleDegree;
+
+		x = a_fOuterRadius * cos(angle * rad);
+		z = a_fOuterRadius * sin(angle * rad);
+		y = a_fHeight;
+
+		vector3 point3 = vector3(x, 0.0f, z);
+
+		x = a_fInnerRadius * cos(angle * rad);
+		z = a_fInnerRadius * sin(angle * rad);
+		y = a_fHeight;
+
+		vector3 point4 = vector3(x, 0.0f, z);
+
+		AddQuad(point1, point2, point3, point4);
+	}
+
 
 	//Your code ends here
 	CompileObject(a_v3Color);
@@ -223,15 +406,53 @@ void MyPrimitive::GenerateSphere(float a_fRadius, int a_nSubdivisions, vector3 a
 
 	//Your code starts here
 	float fValue = 0.5f;
-	//3--2
-	//|  |
-	//0--1
-	vector3 point0(-fValue, -fValue, fValue); //0
-	vector3 point1(fValue, -fValue, fValue); //1
-	vector3 point2(fValue, fValue, fValue); //2
-	vector3 point3(-fValue, fValue, fValue); //3
 
-	AddQuad(point0, point1, point3, point2);
+	float angle = 360.0f;
+	float angleDegree = 360.0f / a_nSubdivisions;
+	float rad = (float)PI / 180.0f;
+	float height = 180.0f;
+	float angleHeight = 180.0f / a_nSubdivisions;
+	float depth = 270.0f;
+	float angleDepth = 180.0f / a_nSubdivisions;
+
+	for (int i = 0; i < a_nSubdivisions; i++) {
+		for (int j = 0; j < a_nSubdivisions; j++) {
+			vector3 point1;
+			vector3 point2;
+			vector3 point3;
+			vector3 point4;
+
+			float x = a_fRadius * cos(angle * rad) * cos(depth * rad);
+			float z = a_fRadius * sin(angle * rad) * cos(depth * rad);
+			float y = a_fRadius * cos(height * rad);
+
+			point1 = vector3(x, y, z);
+
+			x = a_fRadius * cos(angle * rad) * cos((depth + angleDepth) * rad);
+			z = a_fRadius * sin(angle * rad) * cos((depth + angleDepth) * rad);
+			y = a_fRadius * cos((height + angleHeight) * rad);
+
+			point3 = vector3(x, y, z);
+
+			angle -= angleDegree;
+
+			x = a_fRadius * cos(angle * rad) * cos((depth)* rad);
+			z = a_fRadius * sin(angle * rad) * cos((depth)* rad);
+			y = a_fRadius * cos((height)* rad);
+
+			point2 = vector3(x, y, z);
+
+			x = a_fRadius * cos(angle * rad) * cos((depth + angleDepth) * rad);
+			z = a_fRadius * sin(angle * rad) * cos((depth + angleDepth) * rad);
+			y = a_fRadius * cos((height + angleHeight) * rad);
+
+			point4 = vector3(x, y, z);
+
+			AddQuad(point1, point2, point3, point4);
+		}
+		depth += angleDepth;
+		height += angleHeight;
+	}
 
 	//Your code ends here
 	CompileObject(a_v3Color);

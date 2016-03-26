@@ -1,0 +1,14 @@
+﻿  Main.cpp
+c:\users\veronica\desktop\templated list\solution\templatedstack.h(22): warning C4244: 'initializing': conversion from 'double' to 'size_t', possible loss of data
+  c:\users\veronica\desktop\templated list\solution\templatedstack.h(19): note: while compiling class template member function 'TypeStack<double>::TypeStack(T)'
+          with
+          [
+              T=double
+          ]
+  c:\users\veronica\desktop\templated list\solution\main.cpp(10): note: see reference to function template instantiation 'TypeStack<double>::TypeStack(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  c:\users\veronica\desktop\templated list\solution\main.cpp(10): note: see reference to class template instantiation 'TypeStack<double>' being compiled
+  Solution.vcxproj -> C:\Users\Veronica\Desktop\Templated List\x64\Debug\Solution.exe

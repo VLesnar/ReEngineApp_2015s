@@ -50,16 +50,26 @@ void AppClass::Update(void)
 
 #pragma region YOUR CODE GOES HERE
 	//Calculate the position of the Earth
-	m_m4Earth = glm::rotate(IDENTITY_M4, m_fEarthTimer, vector3(0.0f, 1.0f, 0.0f));
+	m_m4Earth = glm::rotate(IDENTITY_M4, m_fEarthTimer, vector3(0.0f, 1.0f, 0.0f)) * distanceEarth;
 
 	//Calculate the position of the Moon
-	m_m4Moon = glm::rotate(IDENTITY_M4, m_fMoonTimer, vector3(0.0f, 1.0f, 0.0f));
+	m_m4Moon = glm::rotate(m_m4Earth, -m_fMoonTimer, vector3(0.0f, 1.0f, 0.0f)) * distanceMoon;
+
+	// Rotate the Moon around the Earth
+	m_m4Moon = glm::rotate(m_m4Moon, 90.0f, vector3(0.0f, 0.0f, 1.0f));
+
+	// Rotate the Earth on its axis
+	m_m4Earth = glm::rotate(m_m4Earth, 90.0f, vector3(0.0f, 0.0f, 1.0f));
+
+	//Rotate the Earth around the Sun
+	m_m4Earth = glm::rotate(m_m4Earth, m_fMoonTimer, vector3(1.0f, 0.0f, 0.0f));
+
 #pragma endregion
 
 #pragma region Print info
 	printf("Earth Day: %.3f, Moon Day: %.3f\r", m_fEarthTimer, m_fMoonTimer);//print the Frames per Second
-	
-	//Indicate the FPS
+
+																			 //Indicate the FPS
 	int nFPS = m_pSystem->GetFPS();
 	//Print info on the screen
 	m_pMeshMngr->PrintLine(m_pSystem->GetAppName(), REYELLOW);
@@ -101,7 +111,7 @@ void AppClass::Display(void)
 	m_pSun->Render(m_pCameraMngr->GetProjectionMatrix(), m_pCameraMngr->GetViewMatrix(), m_m4Sun);
 	m_pEarth->Render(m_pCameraMngr->GetProjectionMatrix(), m_pCameraMngr->GetViewMatrix(), m_m4Earth);
 	m_pMoon->Render(m_pCameraMngr->GetProjectionMatrix(), m_pCameraMngr->GetViewMatrix(), m_m4Moon);
-	
+
 	m_pMeshMngr->Render(); //renders the render list
 
 	m_pGLSystem->GLSwapBuffers(); //Swaps the OpenGL buffers
