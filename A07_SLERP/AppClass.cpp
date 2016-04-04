@@ -20,6 +20,11 @@ void AppClass::InitVariables(void)
 	m_pMeshMngr->LoadModel("Planets\\03_Earth.obj", "Earth");
 	m_pMeshMngr->LoadModel("Planets\\03A_Moon.obj", "Moon");
 
+	// Set the matrices
+	sunMatrix = IDENTITY_M4;
+	earthMatrix = IDENTITY_M4;
+	moonMatrix = IDENTITY_M4;
+
 	//Setting the days duration
 	m_fDay = 1.0f;
 }
@@ -39,18 +44,45 @@ void AppClass::Update(void)
 	//Getting the time between calls
 	double fCallTime = m_pSystem->LapClock();
 	//Counting the cumulative time
-	static double fRunTime = 0.0f;
-	fRunTime += fCallTime;
+	static float fRunTime = 0.0f;
+	fRunTime += fCallTime * 10;
+
+	float fStartTime = 0.0f;
+	float fEndTime = 1.0f;
+	float fPercent = MapValue(fRunTime, fStartTime, fEndTime, 0.0f, 1.0f);
 
 	//Earth Orbit
-	double fEarthHalfOrbTime = 182.5f * m_fDay; //Earths orbit around the sun lasts 365 days / half the time for 2 stops
+	float fEarthHalfOrbTime = 182.5f * m_fDay; //Earths orbit around the sun lasts 365 days / half the time for 2 stops
 	float fEarthHalfRevTime = 0.5f * m_fDay; // Move for Half a day
 	float fMoonHalfOrbTime = 14.0f * m_fDay; //Moon's orbit is 28 earth days, so half the time for half a route
 
+	// Sun
+	sunMatrix = glm::scale(vector3(sunSize, sunSize, sunSize));
+
+	// Earth
+	// Calculates the Earth's spin on its own axis
+	quaternion earthQuatAxis1 = glm::angleAxis(0.0f, vector3(0.0f, 1.0f, 0.0f));
+	quaternion earthQuatAxis2 = glm::angleAxis(fEarthHalfOrbTime * 2, vector3(0.0f, 1.0f, 0.0f));
+	
+	// Earth matrix - Point Rotate, Translate, Scale
+	earthMatrix = glm::rotate(IDENTITY_M4, fRunTime, vector3(0.0f, 1.0f, 0.0f)) * glm::translate(11.0f, 0.0f, 0.0f)* glm::scale(vector3(earthSize, earthSize, earthSize));
+	
+	// Moon
+	// Calculates the Moon's spin on its own axis
+	quaternion moonQuatAxis1 = glm::angleAxis(0.0f, vector3(0.0f, 1.0f, 0.0f));
+	quaternion moonQuatAxis2 = glm::angleAxis(fMoonHalfOrbTime, vector3(0.0f, 1.0f, 0.0f));
+	
+	// Moon matrix - Point Rotate, Translate, Scale
+	moonMatrix = glm::rotate(earthMatrix, fRunTime * 14.0f, vector3(0.0f, 1.0f, 0.0f)) * glm::translate(2.0f, 0.0f, 0.0f) * glm::scale(vector3(moonSize, moonSize, moonSize));
+
+	// Axis Rotation
+	earthMatrix *= glm::mat4_cast(glm::mix(earthQuatAxis2, earthQuatAxis1, fPercent));
+	moonMatrix *= glm::mat4_cast(glm::mix(moonQuatAxis2, moonQuatAxis1, fPercent));
+	
 	//Setting the matrices
-	m_pMeshMngr->SetModelMatrix(IDENTITY_M4, "Sun");
-	m_pMeshMngr->SetModelMatrix(IDENTITY_M4, "Earth");
-	m_pMeshMngr->SetModelMatrix(IDENTITY_M4, "Moon");
+	m_pMeshMngr->SetModelMatrix(sunMatrix, "Sun");
+	m_pMeshMngr->SetModelMatrix(earthMatrix, "Earth");
+	m_pMeshMngr->SetModelMatrix(moonMatrix, "Moon");
 
 	//Adds all loaded instance to the render list
 	m_pMeshMngr->AddInstanceToRenderList("ALL");
@@ -58,6 +90,10 @@ void AppClass::Update(void)
 	static int nEarthOrbits = 0;
 	static int nEarthRevolutions = 0;
 	static int nMoonOrbits = 0;
+
+	nEarthRevolutions = floor(fRunTime); // Increments everytime the Earth spins once on its own axis
+	nEarthOrbits = floor(fRunTime) / 365;	// Increments everytime the Earth spins once around the Sun
+	nMoonOrbits = floor(fRunTime) / 28;	// Increments everytime the Moon spins once around the Earth
 
 	//Indicate the FPS
 	int nFPS = m_pSystem->GetFPS();
