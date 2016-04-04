@@ -57,6 +57,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "E12_Midterm", "E12_Midterm\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "E09_Projections", "E09_Projections\E09_Projections.vcxproj", "{9B6650A4-8EB9-4CBC-A25C-10726F0BD80D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "A08_CameraSingleton", "A08_CameraSingleton\A08CameraSingleton.vcxproj", "{8BA51CE3-EA38-4820-A3C8-89B2BD98B6FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -269,6 +271,14 @@ Global
 		{9B6650A4-8EB9-4CBC-A25C-10726F0BD80D}.Release|x64.ActiveCfg = Release|Win32
 		{9B6650A4-8EB9-4CBC-A25C-10726F0BD80D}.Release|x86.ActiveCfg = Release|Win32
 		{9B6650A4-8EB9-4CBC-A25C-10726F0BD80D}.Release|x86.Build.0 = Release|Win32
+		{8BA51CE3-EA38-4820-A3C8-89B2BD98B6FB}.Debug|x64.ActiveCfg = Debug|x64
+		{8BA51CE3-EA38-4820-A3C8-89B2BD98B6FB}.Debug|x64.Build.0 = Debug|x64
+		{8BA51CE3-EA38-4820-A3C8-89B2BD98B6FB}.Debug|x86.ActiveCfg = Debug|Win32
+		{8BA51CE3-EA38-4820-A3C8-89B2BD98B6FB}.Debug|x86.Build.0 = Debug|Win32
+		{8BA51CE3-EA38-4820-A3C8-89B2BD98B6FB}.Release|x64.ActiveCfg = Release|x64
+		{8BA51CE3-EA38-4820-A3C8-89B2BD98B6FB}.Release|x64.Build.0 = Release|x64
+		{8BA51CE3-EA38-4820-A3C8-89B2BD98B6FB}.Release|x86.ActiveCfg = Release|Win32
+		{8BA51CE3-EA38-4820-A3C8-89B2BD98B6FB}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
