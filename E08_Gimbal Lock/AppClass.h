@@ -19,6 +19,8 @@ public:
 	matrix4 m_mToWorld;
 
 	vector3 m_v3Orientation;
+	
+	quaternion something;
 
 	/* Constructor */
 	AppClass(HINSTANCE hInstance, LPWSTR lpCmdLine, int nCmdShow) : super(hInstance, lpCmdLine, nCmdShow) {}

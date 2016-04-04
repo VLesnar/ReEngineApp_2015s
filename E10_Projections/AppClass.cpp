@@ -7,11 +7,11 @@ void AppClass::InitVariables(void)
 {
 	//Generate the Cone
 	m_pCone = new PrimitiveClass();
-	m_pCone->GenerateCone(1.0f, 1.0f, 10, RERED);
+	m_pCone->GenerateCone(1.0f, 2.0f, 10, RERED);
 
 	//Generate the Cylinder
 	m_pCylinder = new PrimitiveClass();
-	m_pCylinder->GenerateCylinder(1.0f, 1.0f, 10, REGREEN);
+	m_pCylinder->GenerateCylinder(1.0f, 2.0f, 10, REGREEN);
 
 	//Calculate the first projections
 	m_m4Projection = glm::perspective(45.0f, 1080.0f / 768.0f, 0.01f, 1000.0f);
@@ -28,6 +28,26 @@ void AppClass::Update(void)
 
 	//Adds all loaded instance to the render list
 	m_pMeshMngr->AddInstanceToRenderList("ALL");
+
+	/*m_m4Projection = glm::perspective(
+		45.0f, // Field of View
+		1080.0f / 768.0f,	// Viewing Ratio (Size of the window)
+		// Next two are relative to camera, not world
+		0.01f, // Front Clipping Plane
+		1000.0f);*/	// Back Clipping Plane
+
+	m_m4Projection = glm::ortho(
+		-10.0f,	// left
+		10.0f,	// right
+		-10.0f,	// bottom
+		10.0f,	// top
+		0.01f,	// near
+		1000.0f);	//far
+
+	m_m4View = glm::lookAt(
+		glm::vec3(0.0f, 0.0f, 15.0f),	// Position relative to World
+		glm::vec3(0.0f, 0.0f, 14.0f),	// What I'm looking at
+		glm::vec3(0.0f, 1.0f, 0.0f));	// What is up
 }
 
 void AppClass::Display(void)
@@ -36,7 +56,7 @@ void AppClass::Display(void)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	//Render the grid
-	m_pMeshMngr->AddGridToQueue(1.0f, REAXIS::XY);
+	//m_pMeshMngr->AddGridToQueue(1.0f, REAXIS::XY);
 
 	//Render the cone
 	m_pCone->Render(m_m4Projection, m_m4View, IDENTITY_M4);
@@ -45,7 +65,7 @@ void AppClass::Display(void)
 	m_pCylinder->Render(m_m4Projection, m_m4View, glm::translate(IDENTITY_M4, REAXISZ * -3.0f));
 
 	//Render the rest of the meshes
-	m_pMeshMngr->Render();
+	//m_pMeshMngr->Render();
 
 	//Swaps the OpenGL buffers
 	m_pGLSystem->GLSwapBuffers();
