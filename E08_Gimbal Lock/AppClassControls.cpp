@@ -24,25 +24,41 @@ void AppClass::ProcessKeyboard(void)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
 	{
 		m_v3Orientation = vector3(0.0f);
+		something = quaternion(vector3(0.0f, 0.0f, 0.0f));
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
 	{
-		if (!bModifier) m_v3Orientation.x += 1.0f;
-		else m_v3Orientation.x -= 1.0f;
-		something = something * quaternion(vector3(PI * 0.1f, 0, 0));
+		if (!bModifier) {
+			m_v3Orientation.x += 1.0f;
+			something = something * quaternion(vector3(PI * 0.01f, 0, 0));
+		}
+		else {
+			m_v3Orientation.x -= 1.0f;
+			something = something * quaternion(-vector3(PI * 0.01f, 0, 0));
+		}
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y))
 	{
-		if (!bModifier) m_v3Orientation.y += 1.0f;
-		else m_v3Orientation.y -= 1.0f;
-		something = something * quaternion(vector3(0.0f, PI * 0.1f, 0));
+		if (!bModifier) {
+			m_v3Orientation.y += 1.0f;
+			something = something * quaternion(vector3(PI * 0.01f, 0, 0));
+		}
+		else {
+			m_v3Orientation.y -= 1.0f;
+			something = something * quaternion(-vector3(0.0f, -PI * 0.01f, 0));
+		}
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
 	{
-		if (!bModifier) m_v3Orientation.z += 1.0f;
-		else m_v3Orientation.z -= 1.0f;
-		something = something * quaternion(vector3(0, 0,PI * 0.1f));
+		if (!bModifier) {
+			m_v3Orientation.z += 1.0f;
+			something = something * quaternion(vector3(PI * 0.01f, 0, 0));
+		}
+		else {
+			m_v3Orientation.z -= 1.0f;
+			something = something * quaternion(-vector3(0, 0, -PI * 0.01f));
+		}
 	}
 
 #pragma region Camera Positioning

@@ -36,18 +36,18 @@ void AppClass::Update(void)
 		0.01f, // Front Clipping Plane
 		1000.0f);*/	// Back Clipping Plane
 
-	m_m4Projection = glm::ortho(
+	/*m_m4Projection = glm::ortho(
 		-10.0f,	// left
 		10.0f,	// right
 		-10.0f,	// bottom
 		10.0f,	// top
 		0.01f,	// near
-		1000.0f);	//far
+		1000.0f);*/	//far
 
-	m_m4View = glm::lookAt(
+	/*m_m4View = glm::lookAt(
 		glm::vec3(0.0f, 0.0f, 15.0f),	// Position relative to World
 		glm::vec3(0.0f, 0.0f, 14.0f),	// What I'm looking at
-		glm::vec3(0.0f, 1.0f, 0.0f));	// What is up
+		glm::vec3(0.0f, 1.0f, 0.0f));*/	// What is up
 }
 
 void AppClass::Display(void)
