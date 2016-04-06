@@ -17,19 +17,25 @@ void AppClass::InitVariables(void)
 	//Set the camera position
 	//camMngr->GetView();
 	camMngr->GetProjection(true);
-	camMngr->SetPosition(vector3(0.0f, 0.0f, -50.0f));
+	camMngr->SetPosition(vector3(0.0f, 0.0f, -10.0f));
 	camMngr->SetTarget(vector3(0.0f, 0.0f, 0.0f));
 	camMngr->SetUp(vector3(0.0f, 1.0f, 0.0f));
+	ortho = false;
 	/*m_pCameraMngr->SetPositionTargetAndView(
 		vector3(0.0f, 2.5f, 15.0f),//Camera position
 		vector3(0.0f, 2.5f, 0.0f),//What Im looking at
 		REAXISY);//What is up*/
 	//Load a model onto the Mesh manager
 	m_pMeshMngr->LoadModel("Lego\\Unikitty.bto", "Unikitty");
+	
+	m_pCube = new PrimitiveClass();
+	m_pCube->GenerateCube(1.0f, vector3(1.0f, 0.0f, 0.0f));
 }
 
 void AppClass::Update(void)
 {
+	m_m4Cube = IDENTITY_M4;
+
 	//Update the system's time
 	m_pSystem->UpdateTime();
 
@@ -88,7 +94,12 @@ void AppClass::Display(void)
 		break;
 	}*/
 	
-	m_pMeshMngr->Render(); //renders the render list
+	//m_pMeshMngr->Render(); //renders the render list
+	
+	m_pCube->Render(
+		camMngr->GetProjection(ortho),
+		camMngr->GetView(),
+		m_m4Cube);
 
 	m_pGLSystem->GLSwapBuffers(); //Swaps the OpenGL buffers
 }

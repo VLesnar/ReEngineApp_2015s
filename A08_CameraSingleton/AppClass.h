@@ -15,6 +15,9 @@ class AppClass : public ReEngAppClass
 {
 public:
 	CameraManager* camMngr;
+	PrimitiveClass* m_pCube = nullptr; 
+	matrix4 m_m4Cube;
+	bool ortho;
 	typedef ReEngAppClass super;
 	/*
 	USAGE: Constructor

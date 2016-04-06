@@ -12,10 +12,11 @@ private:
 	CameraManager(CameraManager const& other);
 	matrix4 viewMatrix;
 	matrix4 projectMatrix;
-	matrix4 orthoMatrix;
 	vector3 v3Position;
 	vector3 v3Target;
 	vector3 v3Up;
+	vector3 v3Forward;
+	quaternion quat;
 public:
 	static CameraManager* GetInstance();
 	static void ReleaseInstance();

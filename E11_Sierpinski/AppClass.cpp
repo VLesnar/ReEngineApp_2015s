@@ -27,6 +27,13 @@ void AppClass::InitVariables(void)
 
 	//Compiling the mesh
 	m_pMesh->CompileOpenGL3X();
+
+	m_fMatrixArray = new float[m_nObjects * 16];
+
+	for (uint n = 0; n < m_nObjects; n++) {
+		const float* m4MVP = glm::value_ptr(glm::translate(vector3(n * 2, 0, 0)));
+		memcpy(&m_fMatrixArray[n * 16], m4MVP, 16 * sizeof(float));
+	}
 }
 
 void AppClass::Update(void)
@@ -63,7 +70,7 @@ void AppClass::Display(void)
 	matrix4 m4Projection = m_pCameraMngr->GetProjectionMatrix();
 	matrix4 m4View = m_pCameraMngr->GetViewMatrix();
 
-	m_pMesh->Render(m4Projection, m4View, IDENTITY_M4);//Rendering nObjects
+	m_pMesh->RenderList(m4Projection, m4View, m_fMatrixArray, m_nObjects);//Rendering nObjects
 
 	m_pMeshMngr->Render();
 

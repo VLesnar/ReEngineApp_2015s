@@ -19,7 +19,7 @@ matrix4 CameraManager::GetView(void) {
 
 matrix4 CameraManager::GetProjection(bool bOrthographic) {
 	if (bOrthographic) {
-		return orthoMatrix = glm::ortho(-7.5f, 7.5f, -7.5f, 7.5f, 0.01f, 1000.0f);
+		return projectMatrix = glm::ortho(-7.5f, 7.5f, -7.5f, 7.5f, 0.01f, 1000.0f);
 	}
 	else {
 		return projectMatrix = glm::perspective(45.0f, 1080.0f / 768.0f, 0.01f, 1000.0f);
@@ -31,11 +31,13 @@ void CameraManager::SetPosition(vector3 v3Pos) {
 }
 
 void CameraManager::SetTarget(vector3 v3Targ) {
-	v3Target = v3Targ;
+	v3Forward = v3Targ - v3Position;
+	glm::normalize(v3Forward);
+	v3Target = v3Position + v3Forward;
 }
 
 void CameraManager::SetUp(vector3 v3U) {
-	v3Up = v3U;
+	v3Up = glm::normalize(v3U);
 }
 
 void CameraManager::MoveForward(float fIncrement) {
@@ -54,15 +56,28 @@ void CameraManager::MoveVertical(float fIncrement) {
 }
 
 void CameraManager::ChangePitch(float fIncrement) {
-	SetTarget(vector3(0.0f, v3Target.y + cos(fIncrement), v3Target.z + sin(fIncrement)));
-	SetUp(vector3(0.0f, v3Up.y + sin(fIncrement), v3Up.z + cos(fIncrement)));
+	SetTarget(vector3(v3Target.x, v3Target.y + fIncrement, v3Target.z + fIncrement));
+	SetUp(vector3(v3Up.x, v3Up.y + fIncrement, v3Up.z + fIncrement));
+	//cout << "v3Forward: (" << v3Forward.x << ", " << v3Forward.y << ", " << v3Forward.z << ")" << endl;
+	//cout << "v3Target: (" << v3Target.x << ", " << v3Target.y << ", " << v3Target.z << ")" << endl;
+	//cout << "v3Position: (" << v3Position.x << ", " << v3Position.y << ", " << v3Position.z << ")" << endl;
+	//cout << "v3Up: (" << v3Up.x << ", " << v3Up.y << ", " << v3Up.z << ")" << endl;
 }
 
 void CameraManager::ChangeRoll(float fIncrement) {
-	SetUp(vector3(v3Up.x + cos(fIncrement), v3Up.y + sin(fIncrement), 0.0f));
+
+	//SetUp(vector3(v3Up.x + cos(glm::radians(fIncrement)), v3Up.y + sin(glm::radians(fIncrement)), v3Up.z) * quat);
+	SetUp(vector3(v3Up.x + fIncrement, v3Up.y + fIncrement, v3Up.z));
+	//cout << "v3Forward: (" << v3Forward.x << ", " << v3Forward.y << ", " << v3Forward.z << ")" << endl;
+	//cout << "v3Target: (" << v3Target.x << ", " << v3Target.y << ", " << v3Target.z << ")" << endl;
+	//cout << "v3Position: (" << v3Position.x << ", " << v3Position.y << ", " << v3Position.z << ")" << endl;
+	//cout << "v3Up: (" << v3Up.x << ", " << v3Up.y << ", " << v3Up.z << ")" << endl;
 }
 
 void CameraManager::ChangeYaw(float fIncrement) {
-	SetTarget(vector3(v3Target.x + cos(fIncrement), 0.0f, v3Target.z + sin(fIncrement)));
-	SetUp(vector3(v3Up.x + cos(fIncrement), 0.0f, v3Up.z + sin(fIncrement)));
+	SetTarget(vector3(v3Target.x + fIncrement, 0.0f, v3Target.z + fIncrement));
+	//cout << "v3Forward: (" << v3Forward.x << ", " << v3Forward.y << ", " << v3Forward.z << ")" << endl;
+	//cout << "v3Target: (" << v3Target.x << ", " << v3Target.y << ", " << v3Target.z << ")" << endl;
+	//cout << "v3Position: (" << v3Position.x << ", " << v3Position.y << ", " << v3Position.z << ")" << endl;
+	//cout << "v3Up: (" << v3Up.x << ", " << v3Up.y << ", " << v3Up.z << ")" << endl;
 }

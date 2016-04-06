@@ -28,21 +28,39 @@ void AppClass::ProcessKeyboard(void)
 		camMngr->MoveForward(fSpeed);
 
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-		m_pCameraMngr->MoveForward(-fSpeed);
+		camMngr->MoveForward(-fSpeed);
 	
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-		m_pCameraMngr->MoveSideways(-fSpeed);
+		camMngr->MoveSideways(-fSpeed);
 
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-		m_pCameraMngr->MoveSideways(fSpeed);
+		camMngr->MoveSideways(fSpeed);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-		m_pCameraMngr->MoveVertical(-fSpeed);
+		camMngr->MoveVertical(fSpeed);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
-		m_pCameraMngr->MoveVertical(fSpeed);
+		camMngr->MoveVertical(-fSpeed);
 
-		
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+		ortho = false;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) {
+		ortho = true;
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) 
+		camMngr->ChangePitch(-fSpeed);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
+		camMngr->ChangePitch(fSpeed);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)) 
+		camMngr->ChangeRoll(-fSpeed);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num4))
+		camMngr->ChangeRoll(fSpeed);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num5))
+		camMngr->ChangeYaw(-fSpeed);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num6))
+		camMngr->ChangeYaw(fSpeed);
 #pragma endregion
 
 #pragma region Other Actions
@@ -94,6 +112,13 @@ void AppClass::ProcessMouse(void)
 	if(sf::Mouse::isButtonPressed(sf::Mouse::Button::Middle))
 		m_bArcBall = true;
 	
-	if(sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
-		m_bFPC = true;
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right)) {
+		//m_bFPC = true;
+		float mouseX = sf::Mouse::getPosition().x;
+		float mouseY = sf::Mouse::getPosition().y;
+
+		cout << mouseX << endl;
+		cout << mouseY << endl;
+		cout << "Yep!" << endl;
+	}
 }

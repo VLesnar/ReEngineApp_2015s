@@ -1,0 +1,45 @@
+﻿Build started 4/6/2016 4:01:56 PM.
+     1>Project "\\banner.main.ad.rit.edu\students\sml5527\IGMProfile\Desktop\PE3Starter\PE3Starter\GLUTPipelinePE1\GLUTPipelinePE1.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp pe3.cpp tiny_obj_loader.cc
+         tiny_obj_loader.cc
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\tiny_obj_loader.cc(173): warning C4018: '>' : signed/unsigned mismatch
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\tiny_obj_loader.cc(340): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(304) : see declaration of 'sscanf'
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\tiny_obj_loader.cc(571): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(304) : see declaration of 'sscanf'
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\tiny_obj_loader.cc(587): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(304) : see declaration of 'sscanf'
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\tiny_obj_loader.cc(643): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(304) : see declaration of 'sscanf'
+         pe3.cpp
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\pe3.cpp(16): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\pe3.cpp(23): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\pe3.cpp(71): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\pe3.cpp(76): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\pe3.cpp(82): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\pe3.cpp(87): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\pe3.cpp(93): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\pe3.cpp(98): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\pe3.cpp(210): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\pe3.cpp(218): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\pe3.cpp(221): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\pe3.cpp(224): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\pe3.cpp(231): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\pe3.cpp(234): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\pe3.cpp(237): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\pe3.cpp(625): warning C4018: '<' : signed/unsigned mismatch
+         main.cpp
+     1>\\banner.main.ad.rit.edu\students\sml5527\igmprofile\desktop\pe3starter\pe3starter\glutpipelinepe1\main.cpp(40): warning C4316: 'pe3' : object allocated on the heap may not be aligned 16
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"\\banner.main.ad.rit.edu\students\sml5527\IGMProfile\Desktop\PE3Starter\PE3Starter\Debug\GLUTPipelinePE3.exe" /INCREMENTAL /NOLOGO opengl32.lib glu32.lib glfw3.lib glew32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"\\banner.main.ad.rit.edu\students\sml5527\IGMProfile\Desktop\PE3Starter\PE3Starter\Debug\GLUTPipelinePE3.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"\\banner.main.ad.rit.edu\students\sml5527\IGMProfile\Desktop\PE3Starter\PE3Starter\Debug\GLUTPipelinePE3.lib" /MACHINE:X86 Debug\main.obj
+         Debug\pe3.obj
+         Debug\tiny_obj_loader.obj
+     1>LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+         GLUTPipelinePE1.vcxproj -> \\banner.main.ad.rit.edu\students\sml5527\IGMProfile\Desktop\PE3Starter\PE3Starter\Debug\GLUTPipelinePE3.exe
+     1>Done Building Project "\\banner.main.ad.rit.edu\students\sml5527\IGMProfile\Desktop\PE3Starter\PE3Starter\GLUTPipelinePE1\GLUTPipelinePE1.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:07.62
