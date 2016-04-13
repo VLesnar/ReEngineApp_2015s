@@ -8,6 +8,8 @@ void MyBoundingSphereClass::Init(void)
 	m_v3Center = vector3(0.0f);
 	m_v3Min = vector3(0.0f);
 	m_v3Max = vector3(0.0f);
+
+	//m_pMeshMngr->GetInstance();
 }
 void MyBoundingSphereClass::Swap(MyBoundingSphereClass& other)
 {
@@ -20,7 +22,6 @@ void MyBoundingSphereClass::Swap(MyBoundingSphereClass& other)
 }
 void MyBoundingSphereClass::Release(void)
 {
-
 }
 //The big 3
 MyBoundingSphereClass::MyBoundingSphereClass(std::vector<vector3> a_lVectorList)
@@ -82,11 +83,31 @@ MyBoundingSphereClass& MyBoundingSphereClass::operator=(MyBoundingSphereClass co
 }
 MyBoundingSphereClass::~MyBoundingSphereClass(){Release();};
 //Accessors
-void MyBoundingSphereClass::SetModelMatrix(matrix4 a_m4ToWorld){ m_m4ToWorld = a_m4ToWorld; }
-vector3 MyBoundingSphereClass::GetCenter(void){ return vector3(m_m4ToWorld * vector4(m_v3Center, 1.0f)); }
+void MyBoundingSphereClass::SetModelMatrix(matrix4 a_m4ToWorld) { 
+	m_m4ToWorld = a_m4ToWorld * glm::translate(m_v3Center);
+}
+vector3 MyBoundingSphereClass::GetCenter(void){ 
+	return vector3(m_m4ToWorld[3]);
+}
 float MyBoundingSphereClass::GetRadius(void) { return m_fRadius; }
+matrix4 MyBoundingSphereClass :: GetMatrix(void) { return m_m4ToWorld; }
 //--- Non Standard Singleton Methods
 bool MyBoundingSphereClass::IsColliding(MyBoundingSphereClass* const a_pOther)
 {
-	return false;
+	bool bAreColliding = false;
+	// Collision Checking
+	vector3 v3Temp1 = this->GetCenter();
+	vector3 v3Temp2 = a_pOther->GetCenter();
+	std::cout << v3Temp1.x << " " << v3Temp1.y << " " << v3Temp1.z << std::endl;
+	std::cout << v3Temp2.x << " " << v3Temp2.y << " " << v3Temp2.z << std::endl;
+	m_pMeshMngr->PrintLine("x: " + std::to_string(v3Temp1.x) + " y: " + std::to_string(v3Temp1.y) + " z: " + std::to_string(v3Temp1.z), REBLACK);
+
+	if (glm::distance(v3Temp1, v3Temp2) < (this->m_fRadius + a_pOther->GetRadius())) {
+		bAreColliding = true;
+	}
+	else {
+		bAreColliding = false;
+	}
+
+	return bAreColliding;
 }

@@ -6,6 +6,7 @@ Date: 2015/10
 #define __MYBOUNDINGSPHERECLASS_H_
 
 #include "RE\ReEng.h"
+using namespace ReEng;
 
 
 //System Class
@@ -18,7 +19,7 @@ class MyBoundingSphereClass
 	vector3 m_v3Max = vector3(0.0f); //Will store the maximum vector of the Sphere Class
 	std::vector<vector3> vertexList;
 	float nVertexCount = 0.0f;
-
+	MeshManagerSingleton* m_pMeshMngr = MeshManagerSingleton::GetInstance();
 public:
 	/*
 	 MyBoundingSphereClass
@@ -90,6 +91,7 @@ public:
 		MyBoundingSphereClass* const a_pOther -> Other object to check collision with
 	OUTPUT: bool -> check of the collision
 	*/
+	matrix4 GetMatrix(void);
 	bool IsColliding(MyBoundingSphereClass* const a_pOther);
 	
 private:
