@@ -114,5 +114,15 @@ void AppClass::Release(void)
 		delete sphere2;
 		sphere2 = nullptr;
 	}
+
+	if (m_pBox1 != nullptr) {
+		delete sphere1;
+		sphere1 = nullptr;
+	}
+
+	if (m_pBox2 != nullptr) {
+		delete sphere2;
+		sphere2 = nullptr;
+	}
 	super::Release(); //release the memory of the inherited fields
 }
