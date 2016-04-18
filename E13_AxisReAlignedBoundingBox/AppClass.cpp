@@ -50,15 +50,20 @@ void AppClass::Update(void) {
 	m_pBox1->SetModelMatrix(m_pMeshMngr->GetModelMatrix("Steve"));
 	m_pBox2->SetModelMatrix(m_pMeshMngr->GetModelMatrix("Creeper"));
 
+	m_pBox1->SetCubeSize();
+
 	if (m_pBox1->IsColliding(m_pBox2)) {
 		m_pMeshMngr->PrintLine("They are colliding! :I", RERED);
-		m_pMeshMngr->AddCubeToQueue(glm::translate(m_pBox1->GetCenterG()) * glm::scale(vector3(m_pBox1->GetSize())), RERED, WIRE);
-		m_pMeshMngr->AddCubeToQueue(glm::translate(m_pBox2->GetCenterG()) * glm::scale(vector3(m_pBox2->GetSize())), RERED, WIRE);
+		m_pMeshMngr->AddCubeToQueue(m_pBox1->GetCenterM() * glm::scale(vector3(m_pBox1->GetSize())), RERED, WIRE);
+		m_pMeshMngr->AddCubeToQueue(glm::translate(m_pBox1->GetCenterG()) * glm::scale(vector3(m_pBox1->GetChangingSize())), RERED, WIRE);
+		m_pMeshMngr->AddCubeToQueue(m_pBox2->GetCenterM()  * glm::scale(vector3(m_pBox2->GetSize())), RERED, WIRE);
+		
 	}
 	else {
 		m_pMeshMngr->PrintLine("They are not colliding! :D", REGREEN);
-		m_pMeshMngr->AddCubeToQueue(glm::translate(m_pBox1->GetCenterG()) * glm::scale(vector3(m_pBox1->GetSize())), REWHITE, WIRE);
-		m_pMeshMngr->AddCubeToQueue(glm::translate(m_pBox2->GetCenterG()) * glm::scale(vector3(m_pBox2->GetSize())), REWHITE, WIRE);
+		m_pMeshMngr->AddCubeToQueue(m_pBox1->GetCenterM() * glm::scale(vector3(m_pBox1->GetSize())), REWHITE, WIRE);
+		m_pMeshMngr->AddCubeToQueue(glm::translate(m_pBox1->GetCenterG()) * glm::scale(vector3(m_pBox1->GetChangingSize())), REWHITE, WIRE);
+		m_pMeshMngr->AddCubeToQueue(m_pBox2->GetCenterM() * glm::scale(vector3(m_pBox2->GetSize())), REWHITE, WIRE);
 	}
 
 	//Adds all loaded instance to the render list
@@ -117,12 +122,12 @@ void AppClass::Release(void)
 
 	if (m_pBox1 != nullptr) {
 		delete sphere1;
-		sphere1 = nullptr;
+		m_pBox1 = nullptr;
 	}
 
 	if (m_pBox2 != nullptr) {
 		delete sphere2;
-		sphere2 = nullptr;
+		m_pBox2 = nullptr;
 	}
 	super::Release(); //release the memory of the inherited fields
 }

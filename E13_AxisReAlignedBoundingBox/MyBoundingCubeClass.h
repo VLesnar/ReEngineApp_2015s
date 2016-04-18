@@ -17,7 +17,8 @@ class MyBoundingCubeClass
 	vector3 m_v3Center = vector3(0.0f); //Will store the center point of the Cube Class
 	vector3 m_v3Min = vector3(0.0f); //Will store the minimum vector of the Cube Class
 	vector3 m_v3Max = vector3(0.0f); //Will store the maximum vector of the Cube Class
-
+	vector3 m_v3ChangingSize = vector3(0.0f);
+	std::vector<vector3> m_vList = std::vector<vector3>();
 public:
 	/*
 	 MyBoundingCubeClass
@@ -49,6 +50,11 @@ public:
 	~MyBoundingCubeClass(void);
 
 	/*
+	Do the thing with the list of vectors and setting cube sizes
+	*/
+	void SetCubeSize();
+
+	/*
 	 Swap
 	USAGE: Changes object contents for other object's
 	ARGUMENTS:
@@ -75,6 +81,11 @@ public:
 	vector3 GetCenterG(void);
 
 	/*
+	Get Center Matrix
+	*/
+	matrix4 GetCenterM(void);
+
+	/*
 	 GetRadius
 	USAGE: Gets the Bounding Cube's radius
 	ARGUMENTS: ---
@@ -92,6 +103,7 @@ public:
 	bool IsColliding(MyBoundingCubeClass* const a_pOther);
 
 	vector3 GetSize(void);
+	vector3 GetChangingSize(void);
 	matrix4 GetModelMatrix(void);
 	
 private:
