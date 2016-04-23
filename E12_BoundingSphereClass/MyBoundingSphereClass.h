@@ -93,8 +93,6 @@ public:
 	*/
 	matrix4 GetMatrix(void);
 	bool IsColliding(MyBoundingSphereClass* const a_pOther);
-
-	matrix4 GetModelMatrix(void);
 	
 private:
 	/*

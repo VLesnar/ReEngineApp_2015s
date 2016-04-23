@@ -326,6 +326,55 @@ public:
 	OUTPUT: ---
 	*/
 	void UpdateMap(void);
+
+	/*
+	USAGE: Instance a cube of the specified size color and name
+	ARGUMENTS: ---
+	OUTPUT: ---
+	*/
+	void InstanceCube(float a_fSize, vector3 a_v3Color, String a_sInstanceName);
+
+	/*
+	USAGE: Instance a cuboid of the specified size color and name
+	ARGUMENTS: ---
+	OUTPUT: ---
+	*/
+	void InstanceCuboid(vector3 a_v3Dimentions, vector3 a_v3Color, String a_sInstanceName);
+
+	/*
+	USAGE: Instance a cone of the specified size color and name
+	ARGUMENTS: ---
+	OUTPUT: ---
+	*/
+	void InstanceCone(float a_fRadius, float a_fHeight, int a_nSubdivisions, vector3 a_v3Color, String a_sInstanceName);
+
+	/*
+	USAGE: Instance a cylinder of the specified size color and name
+	ARGUMENTS: ---
+	OUTPUT: ---
+	*/
+	void InstanceCylinder(float a_fRadius, float a_fHeight, int a_nSubdivisions, vector3 a_v3Color, String a_sInstanceName);
+	
+	/*
+	USAGE: Instance a Tube of the specified size color and name
+	ARGUMENTS: ---
+	OUTPUT: ---
+	*/
+	void InstanceTube(float a_fOuterRadius, float a_fInnerRadius, float a_fHeight, int a_nSubdivisions, vector3 a_v3Color, String a_sInstanceName);
+
+	/*
+	USAGE: Instance a Torus of the specified size color and name
+	ARGUMENTS: ---
+	OUTPUT: ---
+	*/
+	void InstanceTorus(float a_fOuterRadius, float a_fInnerRadius, int a_nSubdivisionHeight, int a_nSubdivisionAxis, vector3 a_v3Color, String a_sInstanceName);
+
+	/*
+	USAGE: Instance a Sphere of the specified size color and name
+	ARGUMENTS: ---
+	OUTPUT: ---
+	*/
+	void InstanceSphere(float a_fDiameter, int a_nSubdivisions, vector3 a_v3Color, String a_sInstanceName);
 private:
 	//Rule of Three
 	/*
