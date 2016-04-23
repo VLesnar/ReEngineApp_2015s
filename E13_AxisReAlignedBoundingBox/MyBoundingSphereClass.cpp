@@ -99,8 +99,6 @@ bool MyBoundingSphereClass::IsColliding(MyBoundingSphereClass* const a_pOther)
 	// Collision Checking
 	vector3 v3Temp1 = this->GetCenter();
 	vector3 v3Temp2 = a_pOther->GetCenter();
-	std::cout << v3Temp1.x << " " << v3Temp1.y << " " << v3Temp1.z << std::endl;
-	std::cout << v3Temp2.x << " " << v3Temp2.y << " " << v3Temp2.z << std::endl;
 	m_pMeshMngr->PrintLine("x: " + std::to_string(v3Temp1.x) + " y: " + std::to_string(v3Temp1.y) + " z: " + std::to_string(v3Temp1.z), REBLACK);
 
 	if (glm::distance(v3Temp1, v3Temp2) < (this->m_fRadius + a_pOther->GetRadius())) {

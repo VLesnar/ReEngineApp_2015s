@@ -12,12 +12,15 @@ Date: 2015/10
 class MyBoundingCubeClass
 {
 	float m_fRadius = 0.0f; //Radius of the Bounding Cube
-	vector3 m_v3Size = vector3(0.0f);
 	matrix4 m_m4ToWorld = IDENTITY_M4; //Matrix that will take us from local to world coordinate
 	vector3 m_v3Center = vector3(0.0f); //Will store the center point of the Cube Class
 	vector3 m_v3Min = vector3(0.0f); //Will store the minimum vector of the Cube Class
 	vector3 m_v3Max = vector3(0.0f); //Will store the maximum vector of the Cube Class
+	vector3 m_v3Size = vector3(0.0f);
+	vector3 m_v3ChangingMin = vector3(0.0f);
+	vector3 m_v3ChangingMax = vector3(0.0f);
 	vector3 m_v3ChangingSize = vector3(0.0f);
+	std::vector<vector3> m_bList = std::vector<vector3>();
 	std::vector<vector3> m_vList = std::vector<vector3>();
 public:
 	/*

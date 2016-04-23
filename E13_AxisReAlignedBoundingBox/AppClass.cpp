@@ -59,6 +59,7 @@ void AppClass::Update(void) {
 		m_pMeshMngr->AddCubeToQueue(m_pBox2->GetCenterM()  * glm::scale(vector3(m_pBox2->GetSize())), RERED, WIRE);
 		
 	}
+
 	else {
 		m_pMeshMngr->PrintLine("They are not colliding! :D", REGREEN);
 		m_pMeshMngr->AddCubeToQueue(m_pBox1->GetCenterM() * glm::scale(vector3(m_pBox1->GetSize())), REWHITE, WIRE);
