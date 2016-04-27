@@ -387,7 +387,7 @@ public:
 	void InstanceTube(float a_fOuterRadius, float a_fInnerRadius, float a_fHeight, int a_nSubdivisions, vector3 a_v3Color, String a_sInstanceName);
 	void InstanceTorus(float a_fOuterRadius, float a_fInnerRadius, int a_nSubdivisionHeigh, int a_nSubdivisionAxis, vector3 a_v3Color, String a_sInstanceName);
 	void InstanceSphere(float a_fDiameter, int a_nSubdivisions, vector3 a_v3Color, String a_sInstanceName);
-
+	bool AreColliding(String a_sInstance1, String a_sInstance2);
 private:
 	//Rule of 3
 	/*

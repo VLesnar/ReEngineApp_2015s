@@ -55,6 +55,10 @@ public:
 	/*
 	USAGE: Will check the collision between two objects if they are colliding it will return a pair, each member
 	- will be the list of group indices (of the other object) each group is colliding with.
+		Meaning:
+		group 0 of first object is colliding with groups so and so of the second object
+		group 1 of first object is colliding with groups so and so of the second object
+		and the same goes for the second argument which has the groups of second object vs the first
 	ARGUMENTS:
 	- uint nIndex1 -> Index Instance one
 	- uint nIndex2 -> Index Instance two

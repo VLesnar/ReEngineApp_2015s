@@ -163,8 +163,8 @@ namespace ReEng
 			if (a_v4ClearColor != vector4(-1.0f))
 			{
 				m_v4ClearColor = a_v4ClearColor;
-				glClearColor(m_v4ClearColor.r, m_v4ClearColor.g, m_v4ClearColor.b, m_v4ClearColor.a);
 			}
+			glClearColor(m_v4ClearColor.r, m_v4ClearColor.g, m_v4ClearColor.b, m_v4ClearColor.a);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the window
 		}
 
@@ -301,6 +301,8 @@ namespace ReEng
 
 			//Start the clock
 			m_pSystem->StartClock();
+
+			m_selection = std::pair<int, int>(-1, -1);
 
 			printf("\n");
 		}
