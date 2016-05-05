@@ -79,6 +79,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "E15_MyEntityManager", "E15_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OctreeStart", "OctreeStart\OctreeStart.vcxproj", "{1D92D066-5082-4994-B66C-40FC0C16881E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "E17_BulletConfig", "E17_BulletConfig\E17_BulletConfig.vcxproj", "{A4B7E34F-0609-420E-8B8E-8E1005D08C6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -237,6 +239,10 @@ Global
 		{1D92D066-5082-4994-B66C-40FC0C16881E}.Debug|x86.Build.0 = Debug|Win32
 		{1D92D066-5082-4994-B66C-40FC0C16881E}.Release|x86.ActiveCfg = Release|Win32
 		{1D92D066-5082-4994-B66C-40FC0C16881E}.Release|x86.Build.0 = Release|Win32
+		{A4B7E34F-0609-420E-8B8E-8E1005D08C6C}.Debug|x86.ActiveCfg = Debug|Win32
+		{A4B7E34F-0609-420E-8B8E-8E1005D08C6C}.Debug|x86.Build.0 = Debug|Win32
+		{A4B7E34F-0609-420E-8B8E-8E1005D08C6C}.Release|x86.ActiveCfg = Release|Win32
+		{A4B7E34F-0609-420E-8B8E-8E1005D08C6C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
