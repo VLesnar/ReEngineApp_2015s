@@ -6,17 +6,21 @@ Date: 2015/06
 #define __MyOctant_H_
 
 #include "RE\ReEng.h"
+#include "MyBOManager.h"
 
 namespace ReEng
 {
-
 //System Class
 class MyOctant
 {
 	vector3 m_v3Position;
 	MeshManagerSingleton* m_pMeshMngr = nullptr;
 	float m_fSize;
+	int m_nChildCount;
+	MyBOManager* m_pBOMngr = nullptr;
+	
 public:
+	static bool m_bHead;
 	MyOctant* m_pChildren = nullptr;
 	/*
 	Method: MyOctant
@@ -91,7 +95,6 @@ public:
 	Output:
 	*/
 	int& GetDataOnVector(int a_nIndex);
-
 private:
 	/*
 	Method: Release

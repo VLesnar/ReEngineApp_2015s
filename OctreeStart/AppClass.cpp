@@ -18,14 +18,23 @@ void AppClass::InitVariables(void)
 	m_selection = std::pair<int, int>(-1, -1);
 	//Set the camera position
 	m_pCameraMngr->SetPositionTargetAndView(
-		vector3(0.0f, 2.5f, 15.0f),//Camera position
-		vector3(0.0f, 2.5f, 0.0f),//What Im looking at
+		vector3(0.0f, 0.0f, 35.0f),//Camera position
+		vector3(0.0f, 0.0f, 0.0f),//What Im looking at
 		REAXISY);//What is up
 	//Load a model onto the Mesh manager
-	m_pMeshMngr->LoadModel("Minecraft\\Creeper.obj", "Creeper");
+	m_pBOMngr = MyBOManager::GetInstance();
+	for (uint n = 0; n < 10; n++) {
+		String sName = "Creeper" + std::to_string(n);
+		vector3 v3Position = vector3(glm::sphericalRand(10.0f));
+		m_pMeshMngr->LoadModel("Minecraft\\Creeper.obj", sName, false, 
+			glm::translate(v3Position + vector3(5, 0, 0)));
+		m_pBOMngr->AddObject(sName);
+	}
 
-	m_pOctreeHead = new MyOctant(10.0f);
+	m_pOctreeHead = new MyOctant();
 	m_pOctreeHead->Subdivide();
+	//m_pOctreeHead->m_pChildren[0].Subdivide();
+	//m_pOctreeHead->m_pChildren[0].m_pChildren[0].Subdivide();
 }
 
 void AppClass::Update(void)

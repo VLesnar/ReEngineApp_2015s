@@ -12,6 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1D92D066-5082-4994-B66C-40FC0C16881E}</ProjectGuid>
+    <ProjectGuid>{C39927BA-EB62-467C-96FA-6DE4B323CE92}</ProjectGuid>
     <RootNamespace>OctreeStart</RootNamespace>
     <ProjectName>OctreeStart</ProjectName>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
@@ -107,12 +108,16 @@ xcopy "$(SolutionDir)include\RE\Shaders" "$(SolutionDir)_Binary\Shaders" /y</Com
   <ItemGroup>
     <ClCompile Include="AppClass.cpp" />
     <ClCompile Include="AppClassControls.cpp" />
+    <ClCompile Include="MyBOClass.cpp" />
+    <ClCompile Include="MyBOManager.cpp" />
     <ClCompile Include="MyOctant.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\res\Resource.h" />
     <ClInclude Include="AppClass.h" />
+    <ClInclude Include="MyBOClass.h" />
+    <ClInclude Include="MyBOManager.h" />
     <ClInclude Include="MyOctant.h" />
   </ItemGroup>
   <ItemGroup>
