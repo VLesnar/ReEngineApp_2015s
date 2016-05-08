@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ModelViewer", "ModelViewer\ModelViewer_VS15.vcxproj", "{FB51C0AB-6E10-4DEB-9D27-A3C31251A36D}"
 EndProject
@@ -77,7 +77,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "08_Audio", "08_Audio\08_Aud
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "E15_MyEntityManager", "E15_MyEntityManager\E15_MyEntityManager.vcxproj", "{0C037D84-CF9B-4149-AAAB-8317346179DF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OctreeStart", "OctreeStart\OctreeStart.vcxproj", "{C39927BA-EB62-467C-96FA-6DE4B323CE92}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OctreeStart", "OctreeStart\OctreeStart.vcxproj", "{1D92D066-5082-4994-B66C-40FC0C16881E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "E17_BulletConfig", "E17_BulletConfig\E17_BulletConfig.vcxproj", "{A4B7E34F-0609-420E-8B8E-8E1005D08C6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -233,10 +235,14 @@ Global
 		{0C037D84-CF9B-4149-AAAB-8317346179DF}.Debug|x86.Build.0 = Debug|Win32
 		{0C037D84-CF9B-4149-AAAB-8317346179DF}.Release|x86.ActiveCfg = Release|Win32
 		{0C037D84-CF9B-4149-AAAB-8317346179DF}.Release|x86.Build.0 = Release|Win32
-		{C39927BA-EB62-467C-96FA-6DE4B323CE92}.Debug|x86.ActiveCfg = Debug|Win32
-		{C39927BA-EB62-467C-96FA-6DE4B323CE92}.Debug|x86.Build.0 = Debug|Win32
-		{C39927BA-EB62-467C-96FA-6DE4B323CE92}.Release|x86.ActiveCfg = Release|Win32
-		{C39927BA-EB62-467C-96FA-6DE4B323CE92}.Release|x86.Build.0 = Release|Win32
+		{1D92D066-5082-4994-B66C-40FC0C16881E}.Debug|x86.ActiveCfg = Debug|Win32
+		{1D92D066-5082-4994-B66C-40FC0C16881E}.Debug|x86.Build.0 = Debug|Win32
+		{1D92D066-5082-4994-B66C-40FC0C16881E}.Release|x86.ActiveCfg = Release|Win32
+		{1D92D066-5082-4994-B66C-40FC0C16881E}.Release|x86.Build.0 = Release|Win32
+		{A4B7E34F-0609-420E-8B8E-8E1005D08C6C}.Debug|x86.ActiveCfg = Debug|Win32
+		{A4B7E34F-0609-420E-8B8E-8E1005D08C6C}.Debug|x86.Build.0 = Debug|Win32
+		{A4B7E34F-0609-420E-8B8E-8E1005D08C6C}.Release|x86.ActiveCfg = Release|Win32
+		{A4B7E34F-0609-420E-8B8E-8E1005D08C6C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
