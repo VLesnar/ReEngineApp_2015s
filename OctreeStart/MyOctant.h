@@ -8,16 +8,16 @@ Date: 2015/06
 #include "RE\ReEng.h"
 #include "MyBOManager.h"
 
-namespace ReEng
-{
 //System Class
 class MyOctant
 {
+	int m_nChildCount = 0;
 	vector3 m_v3Position;
+	float m_fSize = 0.0f;
 	MeshManagerSingleton* m_pMeshMngr = nullptr;
-	float m_fSize;
-	int m_nChildCount;
 	MyBOManager* m_pBOMngr = nullptr;
+
+	
 	
 public:
 	static bool m_bHead;
@@ -60,41 +60,12 @@ public:
 	Output: ---
 	*/
 	void Swap(MyOctant& other);
+
 	void Display(void);
+
 	void Subdivide(void);
 	void ReleaseChildren(void);
 
-	/*
-	Method:
-	Usage:
-	Arguments: ---
-	Output:
-	*/
-	int GetData(void);
-	/*
-	Method:
-	Usage:
-	Arguments:
-	Output: ---
-	*/
-	void SetData(int a_nData = 1);
-	/* Property */
-	//__declspec(property(get = GetData, put = SetData)) int Data;
-
-	/*
-	Method:
-	Usage:
-	Arguments:
-	Output: ---
-	*/
-	void SetDataOnVector(int a_nData);
-	/*
-	Method:
-	Usage:
-	Arguments:
-	Output:
-	*/
-	int& GetDataOnVector(int a_nIndex);
 private:
 	/*
 	Method: Release
@@ -112,9 +83,5 @@ private:
 	void Init(void);
 };
 
-EXPIMP_TEMPLATE template class ReEngDLL std::vector<MyOctant>;
-EXPIMP_TEMPLATE template class ReEngDLL std::vector<MyOctant*>;
-
-}
 
 #endif //__MyOctant_H__

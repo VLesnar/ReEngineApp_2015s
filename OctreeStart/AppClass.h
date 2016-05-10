@@ -13,7 +13,7 @@ using namespace ReEng; //Using ReEng namespace to use all the classes in the dll
 
 class AppClass : public ReEngAppClass
 {
-	MyOctant* m_pOctreeHead = nullptr;	// First node
+	MyOctant* m_pOctreeHead = nullptr;
 	MyBOManager* m_pBOMngr = nullptr;
 public:
 	typedef ReEngAppClass super;

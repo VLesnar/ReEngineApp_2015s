@@ -23,18 +23,25 @@ void AppClass::InitVariables(void)
 		REAXISY);//What is up
 	//Load a model onto the Mesh manager
 	m_pBOMngr = MyBOManager::GetInstance();
-	for (uint n = 0; n < 10; n++) {
+	for (uint n = 0; n < 10; n++)
+	{
 		String sName = "Creeper" + std::to_string(n);
-		vector3 v3Position = vector3(glm::sphericalRand(10.0f));
+		vector3 v3Position = glm::sphericalRand(10.0f);
 		m_pMeshMngr->LoadModel("Minecraft\\Creeper.obj", sName, false, 
-			glm::translate(v3Position + vector3(5, 0, 0)));
+			glm::translate(v3Position + vector3(5,0,0)));
 		m_pBOMngr->AddObject(sName);
 	}
 
 	m_pOctreeHead = new MyOctant();
 	m_pOctreeHead->Subdivide();
 	//m_pOctreeHead->m_pChildren[0].Subdivide();
-	//m_pOctreeHead->m_pChildren[0].m_pChildren[0].Subdivide();
+
+	//MyOctant octant = m_pOctreeHead->m_pChildren[0];
+	//for (uint i = 0; i < 1000; i++)
+	//{
+	//	octant.Subdivide();
+	//	octant = octant.m_pChildren[0];
+	//}
 }
 
 void AppClass::Update(void)
@@ -56,10 +63,10 @@ void AppClass::Update(void)
 	m_pMeshMngr->SetModelMatrix(ToMatrix4(m_qArcBall), 0);
 	
 	//Adds all loaded instance to the render list
+	//m_pMeshMngr->AddSkyboxToRenderList("Skybox_01.png");
 	m_pMeshMngr->AddInstanceToRenderList("ALL");
 
 	m_pOctreeHead->Display();
-	m_pOctreeHead->m_pChildren[0].Display();
 
 	//Indicate the FPS
 	int nFPS = m_pSystem->GetFPS();
@@ -88,7 +95,8 @@ void AppClass::Display(void)
 
 void AppClass::Release(void)
 {
-	if (m_pOctreeHead != nullptr) {
+	if (m_pOctreeHead != nullptr)
+	{
 		delete m_pOctreeHead;
 		m_pOctreeHead = nullptr;
 	}

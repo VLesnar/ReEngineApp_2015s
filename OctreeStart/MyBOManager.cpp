@@ -249,4 +249,4 @@ int MyBOManager::GetIndex(String a_sIndex)
 		return -1;
 	return var->second;//Get the index
 }
-int MyBOManager::GetObjectCount(void) { return m_nObjectCount; }
+int MyBOManager::GetObjectCount(void) { return m_nObjectCount; };
